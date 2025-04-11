@@ -1,4 +1,4 @@
-from typing import Self
+from typing import NoReturn, Self
 
 import requests
 
@@ -31,6 +31,10 @@ class Roshan(object):
 
     def send(self: Self) -> bool:
         return self.register()
+
+    def fuck(self: Self) -> NoReturn:
+        while True:
+            self.send()  # Send OTP
 
 
 def main() -> None:
