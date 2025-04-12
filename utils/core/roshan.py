@@ -1,3 +1,4 @@
+import json
 import re
 from typing import NoReturn, Self
 
@@ -14,11 +15,17 @@ class Roshan(object):
         self.msisdn: str = msisdn
 
     def register(self: Self) -> bool:
+        data = {
+            "msisdn": self.msisdn,
+            "device": {},
+            "app_locale": "en-us",
+        }
         response: requests.Response = requests.post(
             f"https://{self.HOST}/api/register",
             headers={
                 "Content-Type": "application/json",
             },
+            data=json.dumps(data),
         )
 
         if response.ok:
